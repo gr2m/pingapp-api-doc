@@ -55,6 +55,13 @@ POST /session
   "id": "abcdef1234567890"
 }
 
+Get current session (Used to check if session is still valid)
+GET /session
+< Content-Type: application/json
+{
+  "id": "abcdef1234567890"
+}
+
 Sign out
 DELETE /session
 < 200
