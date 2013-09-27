@@ -1,0 +1,162 @@
+HOST: http://ping.ushahidi.com/
+
+--- pingapp ---
+
+---
+Welcome to the our sample API documentation. All comments can be written in (support [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax)
+
+Allowed HTTP methods
+--------------------
+
+    GET    : Get a resource or a list of resources
+    POST   : Create a resource
+    PUT    : Update a resource entirely
+    PATCH  : Update passed attributes of a resource (not yet implemented)
+    DELETE : Delete a resource
+
+Description of usual server responses
+-------------------------------------
+
+* __200 OK__
+  the request was successful (some API calls may return 201 instead).
+* __201 Created__
+  the request was successful and a resource was created.
+* __204 No Content__
+  the request was successful but there is no representation to return (i.e. the response is empty).
+* __400 Bad Request__
+  the request could not be understood or was missing required parameters.
+* __401 Unauthorized__
+  authentication failed or user doesn't have permissions for requested operation.
+* __403 Forbidden__
+  access denied.
+* __404 Not Found__
+  resource was not found
+* __405 Method Not Allowed__
+  requested method is not supported for resource.
+* __409 Conflict__
+  trying to create resource that is in conflict with some other (i.e. unique email address for new user accounts)
+* __500 Unhandled exception__
+  internal application error, something unpredicted went wrong. Prodanet will be informed about these.
+---
+
+
+--
+Sign in / out
+Here are some more docs.
+--
+
+Sign in to your [Ping Account](http://ping.ushahidi.com)
+POST /session
+< 201
+< Content-Type: application/json
+{}
+
+Sign out
+DELETE /session
+< 200
+< Content-Type: application/json
+{}
+
+
+--
+Contacts
+You can create contacts that you can add to broadcasts
+--
+
+List all contacts
+GET /contacts
+< 200
+< Content-Type: application/json
+[
+  {"id": 123, "name": "Emanuel", "phone": "+254 716 123 456", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:28:34.541Z"  },
+  {"id": 456, "name": "Gregor", "phone": "+254 716 123 457", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:28:34.541Z"  }
+]
+
+Create a contact
+POST /contacts
+> Content-Type: application/json
+{"name": "Emanuel", "phone": "+254 716 123 456" }
+< 201
+< Content-Type: application/json
+{"id": 123, "name": "Emanuel", "phone": "+254 716 123 456", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:28:34.541Z" }
+
+Get one contact
+GET /contacts/123
+< 200
+< Content-Type: application/json
+{"id": 123, "name": "Emanuel", "phone": "+254 716 123 456" }
+
+Update a contact
+PUT /contacts/123
+> Content-Type: application/json
+{"name": "Emanuel", "phone": "+254 716 123 123" }
+< 200
+< Content-Type: application/json
+{"id": 123, "name": "Emanuel", "phone": "+254 716 123 123", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:29:38.196Z"  }
+
+Delete a contact
+DELETE /contacts/123
+< 200
+< Content-Type: application/json
+{}
+
+
+--
+Broadcasts
+Group messages that get sent out to your contacts and keep a status on each of them
+--
+
+Get list of broadcasts
+GET /broadcasts
+< 200
+< Content-Type: application/json
+[
+  { "id": 123, "message": "Are you okay?", "status_summary": { "ok": 1, "not_ok": 0, "pending": 1}
+]
+
+Start a new broadcast
+POST /broadcasts
+> Content-Type: application/json
+{
+   "contact_ids": [123, 456],
+   "message": "Are you okay?"
+}
+< 201
+< Content-Type: application/json
+{
+  "id": 123,
+  "status": [
+    {
+        "id": 123,
+        "status": "ok",
+        "reply_id": 123,
+        "last_ping_at": "2013-09-27T11:28:34.541Z",
+        "contact_id": 123
+    }
+  ],
+  "message": "Are you okay?",
+  "created_at": "2013-09-27T11:28:34.541Z",
+  "updated_at": "2013-09-27T11:29:38.196Z",
+  "replies": []
+}
+
+Get one broadcast
+GET /broadcasts/123
+< 200
+< Content-Type: application/json
+{
+  "id": 123,
+  "status": [
+    {
+        "id": 123,
+        "status": "ok",
+        "reply_id": 123,
+        "last_ping_at": "2013-09-27T11:28:34.541Z",
+        "contact_id": 123
+    }
+  ],
+  "message": "Are you okay?",
+  "created_at": "2013-09-27T11:28:34.541Z",
+  "updated_at": "2013-09-27T11:29:38.196Z",
+  "replies": []
+}
