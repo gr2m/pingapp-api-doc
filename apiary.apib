@@ -51,7 +51,9 @@ POST /session
 {"username": "joe@example.com", "password": "secret" }
 < 201
 < Content-Type: application/json
-{}
+{
+  "id": "abcdef1234567890"
+}
 
 Sign out
 DELETE /session
@@ -67,6 +69,7 @@ You can create contacts that you can add to broadcasts
 
 List all contacts
 GET /contacts
+> X-Session-Id: abcdef1234567890
 < 200
 < Content-Type: application/json
 [
@@ -76,6 +79,7 @@ GET /contacts
 
 Create a contact
 POST /contacts
+> X-Session-Id: abcdef1234567890
 > Content-Type: application/json
 {"name": "Emanuel", "phone": "+254 716 123 456" }
 < 201
@@ -90,6 +94,7 @@ GET /contacts/123
 
 Update a contact
 PUT /contacts/123
+> X-Session-Id: abcdef1234567890
 > Content-Type: application/json
 {"name": "Emanuel", "phone": "+254 716 123 123" }
 < 200
@@ -98,6 +103,7 @@ PUT /contacts/123
 
 Delete a contact
 DELETE /contacts/123
+> X-Session-Id: abcdef1234567890
 < 200
 < Content-Type: application/json
 {}
@@ -110,6 +116,7 @@ Group messages that get sent out to your contacts and keep a status on each of t
 
 Get list of broadcasts
 GET /broadcasts
+> X-Session-Id: abcdef1234567890
 < 200
 < Content-Type: application/json
 [
@@ -118,6 +125,7 @@ GET /broadcasts
 
 Start a new broadcast
 POST /broadcasts
+> X-Session-Id: abcdef1234567890
 > Content-Type: application/json
 {
    "contact_ids": [123, 456],
@@ -144,6 +152,7 @@ POST /broadcasts
 
 Get one broadcast
 GET /broadcasts/123
+> X-Session-Id: abcdef1234567890
 < 200
 < Content-Type: application/json
 {
