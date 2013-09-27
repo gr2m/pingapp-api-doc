@@ -52,14 +52,22 @@ POST /session
 < 201
 < Content-Type: application/json
 {
-  "id": "abcdef1234567890"
+  "id": "abcdef1234567890",
+  "account": {
+    "name": "Joe Doe",
+    "email": "joe@example.com"
+  }
 }
 
 Get current session (Used to check if session is still valid)
 GET /session
 < Content-Type: application/json
 {
-  "id": "abcdef1234567890"
+  "id": "abcdef1234567890",
+  "account": {
+    "name": "Joe Doe",
+    "email": "joe@example.com"
+  }
 }
 
 Sign out
