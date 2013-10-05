@@ -136,20 +136,64 @@ GET /broadcasts
 < 200
 < Content-Type: application/json
 [
-  { 
-      "id": 123, 
-      "message": "Are you okay?", 
-      "status_summary": { 
-          "ok": 1, 
-          "not_ok": 0, 
-          "pending": 1
-      },
-      "contacts": [
-          {"id": 123, "status": "ok", "name": "Emanuel", "phone": "+254 716 123 456", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:28:34.541Z"  },
-          {"id": 456, "status": "pengin", "name": "Gregor", "phone": "+254 716 123 457", "created_at": "2013-09-27T11:28:34.541Z", "updated_at": "2013-09-27T11:28:34.541Z"  }
-       ]
-    "created_at": "2013-09-27T11:28:34.541Z",
-    "updated_at": "2013-09-27T11:29:38.196Z",
+    {
+        "id": 123,
+        "message": "Are you okay?",
+        "status_summary": {
+            "ok": 1,
+            "not_ok": 0,
+            "pending": 1
+        },
+        "contacts": [
+            {
+                "id": 123,
+                "status": "ok",
+                "name": "Emanuel",
+                "phone": "+254 716 123 456",
+                "created_at": "2013-09-27T11:28:34.541Z",
+                "updated_at": "2013-09-27T11:28:34.541Z"
+            },
+            {
+                "id": 456,
+                "status": "pengin",
+                "name": "Gregor",
+                "phone": "+254 716 123 457",
+                "created_at": "2013-09-27T11:28:34.541Z",
+                "updated_at": "2013-09-27T11:28:34.541Z"
+            }
+        ],
+        "created_at": "2013-09-27T11:28:34.541Z",
+        "updated_at": "2013-09-27T11:29:38.196Z"
+    },
+    {
+        "id": 123,
+        "message": "Are you okay?",
+        "status_summary": {
+            "ok": 1,
+            "not_ok": 0,
+            "pending": 1
+        },
+        "contacts": [
+            {
+                "id": 123,
+                "status": "ok",
+                "name": "Emanuel",
+                "phone": "+254 716 123 456",
+                "created_at": "2013-09-27T11:28:34.541Z",
+                "updated_at": "2013-09-27T11:28:34.541Z"
+            },
+            {
+                "id": 456,
+                "status": "pengin",
+                "name": "Gregor",
+                "phone": "+254 716 123 457",
+                "created_at": "2013-09-27T11:28:34.541Z",
+                "updated_at": "2013-09-27T11:28:34.541Z"
+            }
+        ],
+        "created_at": "2013-09-27T11:28:34.541Z",
+        "updated_at": "2013-09-27T11:29:38.196Z"
+    }
 ]
 
 Start a new broadcast
